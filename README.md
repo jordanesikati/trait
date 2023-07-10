@@ -7,6 +7,7 @@ doi: 10.1109/IVCNZ51579.2020.9290575.
 </p>
 For more insights, be free to read the following paper.
 <p> BibTex</p>
+
 <p> @INPROCEEDINGS{9290575,</p>
 <p> author={Paturkar, Abhipray and Gupta, Gourab Sen and Bailey, Donald}, </p>
 <p> booktitle={2020 35th International Conference on Image and Vision Computing New Zealand (IVCNZ)}, </p> 
