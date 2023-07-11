@@ -31,7 +31,7 @@ def read_pcd(filename=''):
 def visualize_pcd(pcd, save_image=False, output_filename=None):
     '''
     This function shows the visual representation of a set of point clouds.
-    pcd: set of points cloud
+    pcd: set of points clouds
     save_image: flag to indicate whether to save the image or not
     output_filename: filename to save the image (required if save_image is True)
     '''
@@ -95,6 +95,56 @@ def get_pcd_radius(pcd):
     std_radius = np.std(distances)
 
     return min_radius, max_radius, mean_radius, std_radius
+
+
+#=================================================================================
+# Experimental Find Optimal Radius
+#=================================================================================
+
+
+def find_optimal_radius(pcd, min_radius=0.01, max_radius=0.1, step=0.01, use_gpu=False):
+    '''
+    This function finds the optimal radius for segmenting the provided point clouds.
+    
+    pcd: point cloud file (.ply)
+    min_radius: minimum radius to search for (default: 0.01)
+    max_radius: maximum radius to search for (default: 0.1)
+    step: step size to use for searching (default: 0.01)
+    use_gpu: boolean to indicate if GPU should be used for computations (default: False)
+    
+    Returns the optimal radius and the segmented point clouds.
+    '''
+    if use_gpu and torch.cuda.is_available():
+        device = torch.device("cuda")
+    else:
+        device = torch.device("cpu")
+    
+    # Create list of radii to search within
+    radii = np.arange(min_radius, max_radius+step, step)
+    num_clusters = []
+    
+    # Loop over all radii and segment the point cloud
+    for r in radii:
+        segmented_pcd = seg_plant_point_cloud2(pcd, r, use_gpu)
+        num_clusters.append(len(segmented_pcd.points))
+    
+    # Calculate the mean and standard deviation of the number of clusters for each radius
+    mean_clusters = np.mean(num_clusters)
+    std_clusters = np.std(num_clusters)
+    
+    # Find the radius with the minimum number of clusters, which is the optimal radius
+    optimal_radius = radii[np.argmin(num_clusters)]
+    
+    # Segment the point cloud using the optimal radius
+    segmented_pcd = seg_plant_point_cloud(pcd, optimal_radius, use_gpu)
+    
+    print("Optimal radius:", optimal_radius)
+    print("Minimum number of clusters:", min(num_clusters))
+    print("Maximum number of clusters:", max(num_clusters))
+    print("Mean number of clusters:", mean_clusters)
+    print("Standard deviation of number of clusters:", std_clusters)
+    
+    return optimal_radius
 
 
 #=================================================================================
