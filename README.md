@@ -1,14 +1,36 @@
 # Plant Point Clouds Segmentation
-<p>
-This implementation is based on A. Paturkar, G. S. Gupta and D. Bailey, "Plant Trait Segmentation for Plant Growth Monitoring," 
-2020 35th International Conference on Image and Vision Computing New Zealand (IVCNZ), Wellington, New Zealand, 2020, pp. 1-6, 
-doi: 10.1109/IVCNZ51579.2020.9290575.
-</p>
-<p align="center">
-  <img src="results/segmentation.png" title="Segmentation">
-</p>
+
+Implementation
+---------------
+```
+<p>This implementation is based on "Plant Trait Segmentation for Plant Growth Monitoring"</p>
+```
+
+Environment
+---------------
+```
+open3d==0.14.1
+numpy>1.20
+torch>=1.7.0
+```
+
+Usage
+---------------
+```
+python3 main.py
+```
+
+Result
+---------------
+```
+<p align="center"><img src="results/segmentation.png" title="Segmentation"></p>
+```
+
 <p>For more insights, be free to read the following paper.</p>
-<p> BibTex</p>
+
+Citations
+------------
+```
 <p> @INPROCEEDINGS{9290575,</p>
 <p> author={Paturkar, Abhipray and Gupta, Gourab Sen and Bailey, Donald}, </p>
 <p> booktitle={2020 35th International Conference on Image and Vision Computing New Zealand (IVCNZ)}, </p> 
@@ -18,4 +40,5 @@ doi: 10.1109/IVCNZ51579.2020.9290575.
 <p> number={},  </p>
 <p> pages={1-6},</p>
 <p> doi={10.1109/IVCNZ51579.2020.9290575}} </p>
+```
 
