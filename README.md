@@ -27,6 +27,7 @@ Result
 
 
 <p>For more insights, be free to read the following paper.
+--------------
 
 Citations
 ------------
