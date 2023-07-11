@@ -101,7 +101,6 @@ def get_pcd_radius(pcd):
 # Experimental Find Optimal Radius
 #=================================================================================
 
-
 def find_optimal_radius(pcd, min_radius=0.01, max_radius=0.1, step=0.01, use_gpu=False):
     '''
     This function finds the optimal radius for segmenting the provided point clouds.
