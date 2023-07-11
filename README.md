@@ -26,9 +26,6 @@ Result
 <p align="center"><img src="results/segmentation.png" title="Segmentation"></p>
 
 
-<p>For more insights, be free to read the following paper.
---------------
-
 Citations
 ------------
 ```
