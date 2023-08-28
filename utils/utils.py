@@ -126,7 +126,7 @@ def find_optimal_radius(pcd, min_radius=0.01, max_radius=0.1, step=0.01, use_gpu
     
     # Loop over all radii and segment the point cloud
     for r in radii:
-        segmented_pcd = seg_plant_point_cloud2(pcd, r, use_gpu)
+        segmented_pcd = segment_pcd(pcd, r, use_gpu)
         num_clusters.append(len(segmented_pcd.points))
     
     # Calculate the mean and standard deviation of the number of clusters for each radius
@@ -137,7 +137,7 @@ def find_optimal_radius(pcd, min_radius=0.01, max_radius=0.1, step=0.01, use_gpu
     optimal_radius = radii[np.argmin(num_clusters)]
     
     # Segment the point cloud using the optimal radius
-    segmented_pcd = seg_plant_point_cloud(pcd, optimal_radius, use_gpu)
+    segmented_pcd = segment_pcd(pcd, optimal_radius, use_gpu)
     
     print("Optimal radius:", optimal_radius)
     print("Minimum number of clusters:", min(num_clusters))
