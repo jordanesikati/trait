@@ -12,4 +12,4 @@ if __name__ == "__main__":
     seg = segment_pcd(pcd, r=min_r)
 
     # Show the result
-    visualize_pcd(seg, save_image=False, output_filename="./result/segmentation2.png")
+    visualize_pcd(seg, save_image=False, output_filename="./results/segmentation.png")
